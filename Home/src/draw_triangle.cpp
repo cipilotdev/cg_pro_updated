@@ -8,64 +8,47 @@ int x_mid, y_mid;
 
 void bre_line(int xa, int ya, int xb, int yb, int color)
 {
-    int delta_x, delta_y, p;
     int xtemp, ytemp;
-    int x, y, i;
-    delta_x = xb - xa;
-    delta_y = yb - ya;
 
-    if (delta_x >= 0) xtemp = 1;
-    else xtemp = -1;
+    if (delta_x >= 0)
+        xtemp = 1;
+    else
+        xtemp = -1;
 
-    if (delta_y >= 0) ytemp = 1; 
-    else ytemp = -1;
+    if (delta_y >= 0)
+        ytemp = 1;
+    else
+        ytemp = -1;
 
-    setcolor(RED);
-   
-    x = xa, y = ya;
+    delta_x = abs(delta_x);
+    delta_y = abs(delta_y);
+
+    int x = xa, y = ya, p, i = 0;
     putpixel(x + x_mid, y_mid - y, color);
-    i = 0;
-    if (abs(delta_y) < abs(delta_x))
+
+    if (delta_y < delta_x)
     {
-        p = (2 * delta_y) - (delta_x);
-        do
+        p = 2 * delta_y - delta_x;
+        while (i <= delta_x)
         {
-            if (p < 0)
-            {
-                x = x + 1;
-                p = p + 2 * delta_y * ytemp;
-                putpixel(x + x_mid, y_mid - y, color);
-            }
-            else
-            {
-                x = x + 1;
-                y = y + 1;
-                p = p + 2 * delta_y - 2 * delta_x;
-                putpixel(x + x_mid, y_mid - y, color);
-            }
+            if (p < 0) p += 2 * delta_y;
+            else { p += 2 * delta_y - 2 * delta_x; y += ytemp; }
+            x += xtemp;
+            putpixel(x + x_mid, y_mid - y, color);
             i++;
-        }while(i<=delta_x);
+        }
     }
     else
     {
-        p = (2 * delta_x ) - (delta_y);
-        do
+        p = 2 * delta_x - delta_y;
+        while (i <= delta_y)
         {
-            if (p < 0)
-            {
-                y = y + 1;
-                p = p + 2 * delta_x;
-                putpixel(x + x_mid, y_mid - y, color);
-            }
-            else
-            {
-                x = x + 1;
-                y = y + 1;
-                p = p + 2 * delta_x - 2 * delta_y;
-                putpixel(x + x_mid, y_mid - y, color);
-            }
+            if (p < 0) p += 2 * delta_x;
+            else { p += 2 * delta_x - 2 * delta_y; x += xtemp; }
+            y += ytemp;
+            putpixel(x + x_mid, y_mid - y, color);
             i++;
-        }while(i<=delta_y);
+        }
     }
 }
 
