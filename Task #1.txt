@@ -1,0 +1,4 @@
+Masukkan Nilai Koordinat Awal:10 20
+Masukkan Nilai Koordinat Akhir:-60 100
+
+Hasil Gambar garis salah menggunakan bresenham, analisa dan berikan alasan kenapa hasil gambar garisnya salah.
