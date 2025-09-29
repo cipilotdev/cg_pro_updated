@@ -114,8 +114,8 @@ int main()
     setcolor(RED);
     line(0, y_mid, xmax, y_mid);
     line(x_mid, 0, x_mid, ymax);
-    // triangle(10,10,-30.0,100);
-    triangle2(10, 20, 100, 50, 50, 150);
+    triangle3(10,10,-30.0,100);
+    // triangle2(10, 20, 100, 50, 50, 150);
     
     getch();
     closegraph();
