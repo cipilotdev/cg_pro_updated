@@ -8,6 +8,8 @@ int x_mid, y_mid;
 
 void bre_line(int xa, int ya, int xb, int yb, int color)
 {
+    int delta_x = xb - xa;
+    int delta_y = yb - ya;
     int xtemp, ytemp;
 
     if (delta_x >= 0)
@@ -78,6 +80,20 @@ void triangle2(int xa, int ya, int xb, int yb, int xc, int yc) {
     bre_line(xa, ya, xb, yb, 4);  // sisi 1: A → B
     bre_line(xb, yb, xc, yc, 1);  // sisi 2: B → C
     bre_line(xc, yc, xa, ya, 14); // sisi 3: C → A
+}
+
+void triangle3(int xa, int ya, int angle, int sideLen)
+{
+    int xb = sideLen * cos(degressToRadians(angle - 30)) + xa;
+    int yb = sideLen * sin(degressToRadians(angle - 30)) + ya;
+
+    int xc = sideLen * cos(degressToRadians(angle + 30)) + xa;
+    int yc = sideLen * sin(degressToRadians(angle + 30)) + ya;
+
+    bre_line(xa, ya, xb, yb,4);
+    bre_line(xc, yc, xb, yb,1);
+    // bre_line(xa, ya, xb, yb,14);
+    bre_line(xa, ya, xc, yc, 14);
 }
 
 int main()
