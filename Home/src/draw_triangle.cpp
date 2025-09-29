@@ -74,10 +74,10 @@ void triangle(int xa, int ya, int angle, int sideLen)
     bre_line(xa, ya, xb, yb,14);
 }
 
-void triangle2(int xa, int ya, int xb, int yb, int xc, int yc ) {
-    bre_line(xa, ya, xb, yb, 4); // line 1
-    bre_line(xc, yc, xb, yb, 1); // line 2
-    bre_line(xa, ya, xb, yb, 14); // line 3
+void triangle2(int xa, int ya, int xb, int yb, int xc, int yc) {
+    bre_line(xa, ya, xb, yb, 4);  // sisi 1: A → B
+    bre_line(xb, yb, xc, yc, 1);  // sisi 2: B → C
+    bre_line(xc, yc, xa, ya, 14); // sisi 3: C → A
 }
 
 int main()
@@ -98,7 +98,8 @@ int main()
     setcolor(RED);
     line(0, y_mid, xmax, y_mid);
     line(x_mid, 0, x_mid, ymax);
-    triangle(10,10,-30.0,100);
+    // triangle(10,10,-30.0,100);
+    triangle2(10, 20, 100, 50, 50, 150);
     
     getch();
     closegraph();
